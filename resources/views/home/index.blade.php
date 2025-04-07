@@ -1,13 +1,16 @@
 <x-app-layout>
-    <div class="py-16 overflow-hidden bg-gray-50 lg:py-24">
-        <div class="max-w-xl px-4 mx-auto sm:px-6 lg:px-8 lg:max-w-7xl">
-            <div class="relative">
-                <h2 class="text-4xl font-extrabold leading-8 tracking-tight text-center text-indigo-600 sm:text-6xl">Encuentra un trabajo en Tech de forma remota</h2>
-                <p class="max-w-3xl mx-auto mt-4 text-xl text-center text-gray-500">Encuentra el trabajo de tus sueños en una empresa internacional; tenemos vacantes para front end developer, backend, devops, mobile y mucho más!</p>
+    <div class="py-20 bg-gray-50 lg:py-28">
+        <div class="max-w-7xl px-4 mx-auto sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold leading-tight tracking-tight text-gray-800 sm:text-5xl md:text-6xl">
+                    Encuentra un trabajo en <span class="text-indigo-600">Tech</span> de forma remota
+                </h2>
+                <p class="max-w-3xl mx-auto mt-6 text-lg sm:text-xl text-gray-600 font-light">
+                    Aplica al trabajo de tus sueños en empresas internacionales. Tenemos vacantes para Front-End, Back-End, DevOps, Mobile y mucho más.
+                </p>
             </div>
         </div>
     </div>
 
     <livewire:home-vacantes>
-
 </x-app-layout>

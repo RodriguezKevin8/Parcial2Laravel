@@ -1,50 +1,62 @@
-<div class="py-10 bg-gray-100">
-    <h2 class="my-5 text-2xl font-extrabold text-center text-gray-600 md:text-4xl">Buscar y Filtrar Vacantes</h2>
+<div class="py-16 bg-gray-100">
+    <h2 class="mb-10 text-3xl font-extrabold text-center text-indigo-600 md:text-4xl">
+        Buscar y Filtrar Vacantes
+    </h2>
 
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-7xl bg-white p-8 rounded-lg shadow-md">
         <form wire:submit.prevent='leerDatosFormulario'>
-            <div class="gap-5 md:grid md:grid-cols-3">
-                <div class="mb-5">
-                    <label
-                        class="block mb-1 text-sm font-bold text-gray-700 uppercase "
-                        for="termino">Término de Búsqueda
+            <div class="grid gap-6 md:grid-cols-3">
+                <!-- Término -->
+                <div>
+                    <label class="block mb-2 text-sm font-semibold text-gray-700 uppercase" for="termino">
+                        Término de Búsqueda
                     </label>
                     <input
                         id="termino"
                         type="text"
-                        placeholder="Buscar por Término: ej. Laravel"
-                        class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        placeholder="Ej: Laravel, React..."
+                        class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-300 focus:border-indigo-500 transition"
                         wire:model='termino'
-                        />
+                    />
                 </div>
 
-                <div class="mb-5">
-                    <label class="block mb-1 text-sm font-bold text-gray-700 uppercase">Categoría</label>
-                    <select class="w-full p-2 border-gray-300" wire:model='categoria'>
-                        <option>--Seleccione--</option>
-
+                <!-- Categoría -->
+                <div>
+                    <label class="block mb-2 text-sm font-semibold text-gray-700 uppercase">
+                        Categoría
+                    </label>
+                    <select
+                        class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-300 focus:border-indigo-500 transition"
+                        wire:model='categoria'>
+                        <option value="">--Seleccione--</option>
                         @foreach ($categorias as $categoria )
                             <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
                         @endforeach
                     </select>
                 </div>
 
-                <div class="mb-5">
-                    <label class="block mb-1 text-sm font-bold text-gray-700 uppercase">Salario Mensual</label>
-                    <select class="w-full p-2 border-gray-300" wire:model='salario'>
-                        <option>-- Seleccione --</option>
+                <!-- Salario -->
+                <div>
+                    <label class="block mb-2 text-sm font-semibold text-gray-700 uppercase">
+                        Salario Mensual
+                    </label>
+                    <select
+                        class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-300 focus:border-indigo-500 transition"
+                        wire:model='salario'>
+                        <option value="">-- Seleccione --</option>
                         @foreach ($salarios as $salario)
-                            <option value="{{ $salario->id }}">{{$salario->salario}}</option>
+                            <option value="{{ $salario->id }}">{{ $salario->salario }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
 
-            <div class="flex justify-end">
+            <div class="flex justify-end mt-8">
                 <input
                     type="submit"
-                    class="w-full px-10 py-2 text-sm font-bold text-white uppercase transition-colors bg-indigo-500 rounded cursor-pointer hover:bg-indigo-600 md:w-auto"
                     value="Buscar"
+                    class="w-full md:w-auto px-10 py-2 text-white font-bold uppercase bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 rounded shadow transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    @disabled(!$categoria && !$salario)
                 />
             </div>
         </form>
