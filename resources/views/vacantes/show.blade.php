@@ -1,8 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $vacante->titulo }}
-        </h2>
+        <div class="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-xl shadow-md py-6 px-4 text-white text-center">
+            <h2 class="text-3xl font-extrabold tracking-tight">
+                {{ $vacante->titulo }}
+            </h2>
+            <p class="mt-2 text-sm sm:text-base font-light text-blue-100">
+                Aquí puedes ver todos los detalles y actualizaciones de esta vacante.
+            </p>
+        </div>
     </x-slot>
 
     <div class="py-12">
