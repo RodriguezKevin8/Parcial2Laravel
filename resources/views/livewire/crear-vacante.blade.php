@@ -53,16 +53,34 @@
     </div>
 
     <div class="mt-4">
-        <x-input-label for="ultimo_dia" :value="('Último Día para postularse')" />
-        <x-text-input 
-        id="ultimo_dia" class="block mt-1 w-full"
-                        type="date"
-                        wire:model="ultimo_dia"
-                       value="{{old('ultimo_dia')}}"/>
-        @error('ultimo_dia')
-            <livewire:mostrar-alerta :message="$message"/>
-        @enderror
-    </div>
+    <x-input-label for="ultimo_dia" :value="__('Último Día para postularse')" />
+    <x-text-input 
+        id="ultimo_dia"
+        class="block mt-1 w-full"
+        type="date"
+        wire:model="ultimo_dia"
+    />
+    <p class="text-sm text-gray-500 mt-1">Debe ser mínimo 7 días después de hoy.</p>
+
+    @error('ultimo_dia')
+        <livewire:mostrar-alerta :message="$message"/>
+    @enderror
+</div>
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const inputFecha = document.getElementById('ultimo_dia');
+
+        const hoy = new Date();
+        hoy.setDate(hoy.getDate() + 7); // suma 7 días
+        const minFecha = hoy.toISOString().split('T')[0];
+
+        inputFecha.min = minFecha;
+    });
+</script>
+@endpush
+
     <div class="mt-4">
         <x-input-label for="descripcion" :value="('Descripción Puesto')" />
         <textarea wire:model="descripcion" id="" placeholder="Descripcion general de puesto, experiencia"
